@@ -14,18 +14,11 @@ public class LoginServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
-//        RequestDispatcher requestDispatcher;
         if (request.getSession().getAttribute("user") != null) {
-            /*requestDispatcher = request.getRequestDispatcher("/user/hello.jsp");
-            requestDispatcher.forward(request, response);*/
             response.sendRedirect("/user/hello.jsp");
-//            response.sendRedirect("/login.jsp");
         }
         else {
-            /*requestDispatcher = request.getRequestDispatcher("/login.jsp");
-            requestDispatcher.forward(request, response);*/
             response.sendRedirect("/login.jsp");
-//            response.sendRedirect("/user/hello.jsp");
         }
     }
 
