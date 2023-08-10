@@ -18,12 +18,12 @@ public class AuthFilter implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse,
                          FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest)servletRequest;
-//        HttpServletResponse response = (HttpServletResponse)servletResponse;
+        HttpServletResponse response = (HttpServletResponse)servletResponse;
 
         if (request.getSession().getAttribute("user") == null) {
-//            response.sendRedirect("/login.jsp");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/login.jsp");
-            dispatcher.forward(servletRequest, servletResponse);
+            response.sendRedirect("/login.jsp");
+//            RequestDispatcher dispatcher = request.getRequestDispatcher("/login.jsp");
+//            dispatcher.forward(servletRequest, servletResponse);
         }
         else
             filterChain.doFilter(servletRequest, servletResponse);
