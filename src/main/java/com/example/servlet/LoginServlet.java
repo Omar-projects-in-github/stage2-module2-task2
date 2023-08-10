@@ -28,10 +28,10 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
         String login = request.getParameter("login");
-        String password = request.getParameter("password").trim();
+        String password = request.getParameter("password");
 
         if ((login.equals("user") || login.equals("admin")) &&
-                !password.isEmpty()) {
+                password != null && !password.trim().isEmpty()) {
             HttpSession session = request.getSession();
             session.setAttribute("user", login);
             response.sendRedirect("/user/hello.jsp");
